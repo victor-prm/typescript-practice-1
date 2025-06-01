@@ -1,3 +1,11 @@
+/* 
+npm i -g typescript		Installér TS globally
+tsc --v				    Check version af TS
+tsc index.ts			Omdan index.ts til js
+tsc -w index.ts			Hold øje med opdateringer på index.ts
+tsc -w 				    Hold øje med hele projektet inkl. tsconfig
+ */
+
 let cashInRegister = 300;
 let nextOrderID: number = 1;
 let nextPizzaID: number = 1;
@@ -69,9 +77,9 @@ function getPizzaDetail(identifier: number | string): Pizza | undefined {
     }
 }
 
-addNewPizza({name: "Chicken Bacon Ranch", price: 12 })
-addNewPizza({name: "BBQ Chicken", price: 11.5 })
-addNewPizza({name: "Spicy Sausage", price: 11 })
+addNewPizza({ name: "Chicken Bacon Ranch", price: 12 })
+addNewPizza({ name: "BBQ Chicken", price: 11.5 })
+addNewPizza({ name: "Spicy Sausage", price: 11 })
 
 placeOrder("Chicken Bacon Ranch")
 completeOrder(1)
@@ -81,3 +89,15 @@ console.log("Cash in register:", cashInRegister)
 console.log("Order History", orderHistory)
 
 console.log(getPizzaDetail(1))
+
+
+function addToArray<Type>(array: Type[], item: Type): Type[] | undefined{
+    array.push(item)
+    return array
+}
+
+/* 
+addToArray<Pizza>(menu,{id: nextPizzaID++, name: "Calzone", price: 13})
+addToArray<Order>(orderHistory, {id: nextOrderID++, pizza: menu[2], status: "completed"})
+console.log(menu,orderHistory)
+ */
